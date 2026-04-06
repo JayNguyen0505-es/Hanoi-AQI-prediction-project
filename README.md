@@ -27,7 +27,7 @@ In this study, AQI is treated as the target variable for prediction. Since AQI r
 
 ## III. Data Gathering
 
-The project uses data from Open-Meteo, including both weather and air-quality variables for Hanoi. The historical dataset supports model training and evaluation, while the real-time pipeline retrieves the latest environmental conditions to generate a live AQI estimate.
+The project uses data from [Open-Meteo](https://open-meteo.com/), including both weather and air-quality variables for Hanoi. The historical dataset supports model training and evaluation, while the real-time pipeline retrieves the latest environmental conditions to generate a live AQI estimate.
 
 The feature set includes:
 - temperature
@@ -56,14 +56,17 @@ This difference is relatively small for a live environmental prediction setting 
 
 Overall, the result suggests that the model captures the short-term AQI trend reasonably well. While this is still a simple linear-regression-based approach, it provides a useful baseline for understanding AQI behavior and for comparing model estimates with real-world monitoring platforms.
 
+For the full implementation and testing process, I have set up a notebook for this part named [Linear_reg.ipynb](Linear_reg.ipynb). Feel free to access it to see my data extraction and other process.
+
 ---
 
 ## V. Air Pollution Advisory
 
-When AQI is in the unhealthy range, reducing exposure becomes important.
+According to [New York State Department of Health](https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm#:~:text=Spend%20more%20time%20indoors.,air%20conditioning%20if%20you%20can.), if AQI is at unhealthy levels, several steps can be taken:
 
 **Outdoor activity**
-- Limit long walks or exercise outside during high-AQI periods.
+- Wear masks: If going outdoors is unavoidable, consider wearing N95 or similar masks designed to filter out particulate matter from the air.
+- Limit exertion: Avoid strenuous activities like running or cycling. Breathe shallowly if possible, as deep breaths bring in more polluted air.
 - Sensitive groups should reduce outdoor exposure even more carefully.
 - Personally, I rarely go outside anyway *lol*, so Hanoi air and I already have a peace treaty.
 
@@ -73,3 +76,6 @@ When AQI is in the unhealthy range, reducing exposure becomes important.
 - Avoid bringing polluted outdoor air inside unnecessarily during peak pollution hours.
 
 In general, AQI information is most useful when it changes behavior. Even a simple prediction system can help people decide when to go out, when to stay in, and when to take extra precautions.
+
+<h1 align="center">STAY SAFE Y’ALL!</h1>
+

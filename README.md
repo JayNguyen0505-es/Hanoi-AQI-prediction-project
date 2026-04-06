@@ -5,7 +5,7 @@
 
 ## I. Introduction
 
-This project was conducted as part of our second-year Machine Learning group project at USTH. It focuses on analyzing and predicting Hanoi’s Air Quality Index (AQI) using weather-, time-, and pollution-related features. The workflow combines exploratory data analysis, feature engineering, and linear regression modeling to better understand local air quality patterns and generate a real-time AQI estimate from live environmental data.
+This project was conducted as part of our second-year Machine Learning group project at [USTH](https://usth.edu.vn/en/). It focuses on analyzing and predicting Hanoi’s Air Quality Index (AQI) using weather-, time-, and pollution-related features. The workflow combines exploratory data analysis, feature engineering, and linear regression modeling to better understand local air quality patterns and generate a real-time AQI estimate from live environmental data.
 
 For me, this topic is also personal. I come from Quy Nhon, where the air quality is usually much better, so pollution was never something I paid close attention to before moving to Hanoi for university. After arriving here, one of the biggest differences I noticed was the air itself: some mornings looked foggy even after sunrise, and even short periods outside could leave my throat dry and my eyes uncomfortable. That experience made AQI prediction feel less like a class requirement and more like a meaningful problem to study.
 
@@ -15,7 +15,7 @@ This README serves as a short project overview. For full implementation details,
 
 ## II. Background Study
 
-AQI is a standardized indicator used to describe how clean or polluted the air is, along with the related health implications. Higher AQI values indicate greater health concern. In practice, AQI categories help translate pollutant measurements into a more understandable public-health warning system.
+[Air Quality Index](https://www.iqair.com/vi/newsroom/resources-what-is-aqi) (AQI) is a standardized indicator used to describe how clean or polluted the air is, along with the related health implications. Higher AQI values indicate greater health concern. In practice, AQI categories help translate pollutant measurements into a more understandable public-health warning system.
 
 <p align="center">
   <img src="aqi-guide.webp" alt="US AQI categories and health recommendations" width="950">

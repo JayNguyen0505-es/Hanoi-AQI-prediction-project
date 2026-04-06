@@ -1,6 +1,6 @@
 # Hanoi Air Quality Analysis and Prediction
 <p align="center">
-  <img src="hoguom-smog.webp" alt="Air pollution in Hanoi" width="850">
+  <img src="images/hoguom-smog.webp" alt="Air pollution in Hanoi" width="850">
 </p>
 
 ## I. Introduction
@@ -20,7 +20,7 @@ For this reason, when our group was assigned a Machine Learning project, AQI pre
 [Air Quality Index](https://www.iqair.com/vi/newsroom/resources-what-is-aqi) (AQI) is a standardized indicator used to describe how clean or polluted the air is, along with the related health implications. Higher AQI values indicate greater health concern. In practice, AQI categories help translate pollutant measurements into a more understandable public-health warning system.
 
 <p align="center">
-  <img src="aqi-guide.webp" alt="US AQI categories and health recommendations" width="950">
+  <img src="images/aqi-guide.webp" alt="US AQI categories and health recommendations" width="950">
 </p>
 
 In this study, AQI is treated as the target variable for prediction. Since AQI reflects the combined effect of pollutant concentration and atmospheric conditions, it is suitable for regression-based modeling. This also makes the prediction result easier to interpret than predicting a single pollutant concentration alone.

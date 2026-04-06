@@ -5,11 +5,13 @@
 
 ## I. Introduction
 
-This project was conducted as part of our second-year Machine Learning group project at [USTH](https://usth.edu.vn/en/). It focuses on analyzing and predicting Hanoi’s Air Quality Index (AQI) using weather-, time-, and pollution-related features. The workflow combines exploratory data analysis, feature engineering, and linear regression modeling to better understand local air quality patterns and generate a real-time AQI estimate from live environmental data.
+This project was conducted as part of our second-year (B2) Machine Learning group project at [USTH](https://usth.edu.vn/en/). It focuses on analyzing and predicting Hanoi’s Air Quality Index (AQI) from March 2023 to March 2026 using three datasets for training, validation, and testing. The study incorporates weather-, time-, and pollution-related features to explore air quality patterns and develop predictive models.
 
-For me, this topic is also personal. I come from Quy Nhon, where the air quality is usually much better, so pollution was never something I paid close attention to before moving to Hanoi for university. After arriving here, one of the biggest differences I noticed was the air itself: some mornings looked foggy even after sunrise, and even short periods outside could leave my throat dry and my eyes uncomfortable. That experience made AQI prediction feel less like a class requirement and more like a meaningful problem to study.
+Also I am especially grateful to my three other group members for their teamwork, effort, and support throughout this project. Their contributions played an important role in making this work possible. 
 
-This README serves as a short project overview. For full implementation details, preprocessing steps, model design, and evaluation, please refer to the Jupyter notebook in this repository.
+For me, this topic is also very personal. I come from Quy Nhon, a coastal city where the air quality is usually good, with AQI levels often staying below 60–70. Because of that, air pollution was never something I paid much attention to before coming to Hanoi for university. However, when I first arrived in Hanoi, one of my strongest impressions was how polluted the air seemed. Many mornings, I woke up and looked outside only to see a white layer that looked like mist or fog — except it was already 8 or 9 a.m., lol. The air often felt thick and hard to breathe, and even spending only around 30 minutes outside could leave the back of my throat feeling uncomfortable and make my eyes water.
+
+For this reason, when our group was assigned a Machine Learning project, AQI prediction in Hanoi was the first idea that came to mind. Our goal is to provide insights into the city’s air pollution in the hope of helping people become more aware of this issue and take appropriate measures to reduce their exposure to harmful air. This README file serves as an abstract of the project. For further details on the methods and insights, please feel free to access our Jupyter Notebooks.
 
 ---
 

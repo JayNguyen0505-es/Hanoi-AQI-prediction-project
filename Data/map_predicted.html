@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_83183b956b0aaf944e8531bde0c69eec {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
+                z-index: 9999; background: rgba(0,0,0,0.7); color: white;
+                padding: 8px 20px; border-radius: 8px; font-family: sans-serif;
+                font-size: 16px; font-weight: bold;">
+        Predicted AQI (Linear Regression) (Avg: 164)
+    </div>
+    
+    
+<div style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            width: 80%; height: 35px; z-index: 9999; border-radius: 8px;
+            display: flex; overflow: hidden; font-family: sans-serif;
+            font-size: 11px; font-weight: bold; border: 1px solid #555;">
+    <div style="flex:1; background:#00e400; color:black; display:flex; align-items:center; justify-content:center;">Good</div>
+    <div style="flex:1; background:#ffff00; color:black; display:flex; align-items:center; justify-content:center;">Moderate</div>
+    <div style="flex:2; background:#ff7e00; color:white; display:flex; align-items:center; justify-content:center;">Sensitive</div>
+    <div style="flex:1; background:#ff0000; color:white; display:flex; align-items:center; justify-content:center;">Unhealthy</div>
+    <div style="flex:1; background:#8f3f97; color:white; display:flex; align-items:center; justify-content:center;">V. Unhealthy</div>
+    <div style="flex:1; background:#7e0023; color:white; display:flex; align-items:center; justify-content:center;">Hazardous</div>
+</div>
+    
+            <div class="folium-map" id="map_83183b956b0aaf944e8531bde0c69eec" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_83183b956b0aaf944e8531bde0c69eec = L.map(
+                "map_83183b956b0aaf944e8531bde0c69eec",
+                {
+                    center: [21.0285, 105.8521],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "maxBounds": [
+[
+-90,
+-180,
+],
+[
+90,
+180,
+],
+],
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+  "bounds": [
+[
+20.92,
+105.7,
+],
+[
+21.12,
+106.0,
+],
+],
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f13b6beaa8e087aeab14f0ce298c01a9 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 12,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f13b6beaa8e087aeab14f0ce298c01a9.addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+            var rectangle_a4e8723317950ca7eadd68fa862a70af = L.rectangle(
+                [[20.5, 105.0], [21.5, 107.0]],
+                {"bubblingMouseEvents": true, "color": "#f44336", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f44336", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 0}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+            var circle_marker_036de3f35fbbcae72b1079872062e951 = L.circleMarker(
+                [21.0362, 105.7827],
+                {"bubblingMouseEvents": true, "color": "#f44336", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f44336", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18, "stroke": true, "weight": 3}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+        var popup_fd3f90c137ca4cea172c8d25af4a8310 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c94654d8bf4482dc16ab69beca83e9da = $(`<div id="html_c94654d8bf4482dc16ab69beca83e9da" style="width: 100.0%; height: 100.0%;"><b>Cau Giay</b><br>Predicted AQI: 164<br>Status: Unhealthy</div>`)[0];
+                popup_fd3f90c137ca4cea172c8d25af4a8310.setContent(html_c94654d8bf4482dc16ab69beca83e9da);
+            
+        
+
+        circle_marker_036de3f35fbbcae72b1079872062e951.bindPopup(popup_fd3f90c137ca4cea172c8d25af4a8310)
+        ;
+
+        
+    
+    
+            var marker_7e33f7978a55203a5c473225ec2caff5 = L.marker(
+                [21.0362, 105.7827],
+                {
+}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+            var div_icon_503cc122a500e1900eebc7535181d406 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt; color:black; font-weight:bold; text-align:center; position:relative; top:-6px;\"\u003e164\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_7e33f7978a55203a5c473225ec2caff5.setIcon(div_icon_503cc122a500e1900eebc7535181d406);
+            
+    
+            var circle_marker_6e890588c1db713c8725dc55ab849a91 = L.circleMarker(
+                [20.9933, 105.8117],
+                {"bubblingMouseEvents": true, "color": "#f44336", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f44336", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18, "stroke": true, "weight": 3}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+        var popup_7556f34ca7eda64f1a210e29cc1240e0 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_bdc9779afdd3bbc10ba95a1c05d34776 = $(`<div id="html_bdc9779afdd3bbc10ba95a1c05d34776" style="width: 100.0%; height: 100.0%;"><b>Thanh Xuan</b><br>Predicted AQI: 158<br>Status: Unhealthy</div>`)[0];
+                popup_7556f34ca7eda64f1a210e29cc1240e0.setContent(html_bdc9779afdd3bbc10ba95a1c05d34776);
+            
+        
+
+        circle_marker_6e890588c1db713c8725dc55ab849a91.bindPopup(popup_7556f34ca7eda64f1a210e29cc1240e0)
+        ;
+
+        
+    
+    
+            var marker_4edb1dbafe485d1592cd15ecb13b2dce = L.marker(
+                [20.9933, 105.8117],
+                {
+}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+            var div_icon_fed6462b039e190332eef9dce8fd0ab9 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt; color:black; font-weight:bold; text-align:center; position:relative; top:-6px;\"\u003e157\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_4edb1dbafe485d1592cd15ecb13b2dce.setIcon(div_icon_fed6462b039e190332eef9dce8fd0ab9);
+            
+    
+            var circle_marker_637f5c424799be8d16d2f6cde19e8892 = L.circleMarker(
+                [20.98, 105.86],
+                {"bubblingMouseEvents": true, "color": "#f44336", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f44336", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18, "stroke": true, "weight": 3}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+        var popup_f7b7906aa0973cf26b855c62420a0865 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_475303c5c4b5457d624eb2c6e134e13e = $(`<div id="html_475303c5c4b5457d624eb2c6e134e13e" style="width: 100.0%; height: 100.0%;"><b>Hoang Mai</b><br>Predicted AQI: 158<br>Status: Unhealthy</div>`)[0];
+                popup_f7b7906aa0973cf26b855c62420a0865.setContent(html_475303c5c4b5457d624eb2c6e134e13e);
+            
+        
+
+        circle_marker_637f5c424799be8d16d2f6cde19e8892.bindPopup(popup_f7b7906aa0973cf26b855c62420a0865)
+        ;
+
+        
+    
+    
+            var marker_51e002d8577245f0df8cfcbc9e051b1a = L.marker(
+                [20.98, 105.86],
+                {
+}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+            var div_icon_ff2ad87edb0add826eda8b72d9e68924 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt; color:black; font-weight:bold; text-align:center; position:relative; top:-6px;\"\u003e158\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_51e002d8577245f0df8cfcbc9e051b1a.setIcon(div_icon_ff2ad87edb0add826eda8b72d9e68924);
+            
+    
+            var circle_marker_af8d021770568b9cc3a60bd1609e5b8a = L.circleMarker(
+                [21.02, 105.75],
+                {"bubblingMouseEvents": true, "color": "#f44336", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f44336", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18, "stroke": true, "weight": 3}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+        var popup_b381ab43222da536764c4947bfbb9468 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_d4fbc33390e88a33a99783eb4aa068fd = $(`<div id="html_d4fbc33390e88a33a99783eb4aa068fd" style="width: 100.0%; height: 100.0%;"><b>Nam Tu Liem</b><br>Predicted AQI: 164<br>Status: Unhealthy</div>`)[0];
+                popup_b381ab43222da536764c4947bfbb9468.setContent(html_d4fbc33390e88a33a99783eb4aa068fd);
+            
+        
+
+        circle_marker_af8d021770568b9cc3a60bd1609e5b8a.bindPopup(popup_b381ab43222da536764c4947bfbb9468)
+        ;
+
+        
+    
+    
+            var marker_0655bb75ac0cdfe088e5ce9ad61cf434 = L.marker(
+                [21.02, 105.75],
+                {
+}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+            var div_icon_98b15176785880deaf75d303a3f0f048 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt; color:black; font-weight:bold; text-align:center; position:relative; top:-6px;\"\u003e164\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_0655bb75ac0cdfe088e5ce9ad61cf434.setIcon(div_icon_98b15176785880deaf75d303a3f0f048);
+            
+    
+            var circle_marker_04bceef616c71b330fca62858d485499 = L.circleMarker(
+                [20.97, 105.78],
+                {"bubblingMouseEvents": true, "color": "#f44336", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f44336", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18, "stroke": true, "weight": 3}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+        var popup_2e8f4f8fb3ab35e5b70c71cf649fdcbe = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_e65c3156f3b88ae969323be0a6747f75 = $(`<div id="html_e65c3156f3b88ae969323be0a6747f75" style="width: 100.0%; height: 100.0%;"><b>Ha Dong</b><br>Predicted AQI: 178<br>Status: Unhealthy</div>`)[0];
+                popup_2e8f4f8fb3ab35e5b70c71cf649fdcbe.setContent(html_e65c3156f3b88ae969323be0a6747f75);
+            
+        
+
+        circle_marker_04bceef616c71b330fca62858d485499.bindPopup(popup_2e8f4f8fb3ab35e5b70c71cf649fdcbe)
+        ;
+
+        
+    
+    
+            var marker_0535cb726c874e4a7359087c36ce1be8 = L.marker(
+                [20.97, 105.78],
+                {
+}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+            var div_icon_6e308a8d55eae650d9508041c4e0b967 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt; color:black; font-weight:bold; text-align:center; position:relative; top:-6px;\"\u003e178\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_0535cb726c874e4a7359087c36ce1be8.setIcon(div_icon_6e308a8d55eae650d9508041c4e0b967);
+            
+    
+            var circle_marker_dcd1b08d842b2cae40f19938823a19b5 = L.circleMarker(
+                [21.07, 105.75],
+                {"bubblingMouseEvents": true, "color": "#f44336", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f44336", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18, "stroke": true, "weight": 3}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+        var popup_a39f9e3e7f0837972e591fb5bef1a9f6 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_814c2d72a3d89e74bf8fd20583c71735 = $(`<div id="html_814c2d72a3d89e74bf8fd20583c71735" style="width: 100.0%; height: 100.0%;"><b>Bac Tu Liem</b><br>Predicted AQI: 164<br>Status: Unhealthy</div>`)[0];
+                popup_a39f9e3e7f0837972e591fb5bef1a9f6.setContent(html_814c2d72a3d89e74bf8fd20583c71735);
+            
+        
+
+        circle_marker_dcd1b08d842b2cae40f19938823a19b5.bindPopup(popup_a39f9e3e7f0837972e591fb5bef1a9f6)
+        ;
+
+        
+    
+    
+            var marker_30b1306311105788f3d278c7297d52f2 = L.marker(
+                [21.07, 105.75],
+                {
+}
+            ).addTo(map_83183b956b0aaf944e8531bde0c69eec);
+        
+    
+            var div_icon_79017e1ec1b2f9a000725d587a8f06dd = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt; color:black; font-weight:bold; text-align:center; position:relative; top:-6px;\"\u003e164\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_30b1306311105788f3d278c7297d52f2.setIcon(div_icon_79017e1ec1b2f9a000725d587a8f06dd);
+            
+</script>
+</html>

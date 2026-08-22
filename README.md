@@ -7,11 +7,9 @@
 
 This project was conducted as part of our second-year (B2) Machine Learning group project at [USTH](https://usth.edu.vn/en/). It focuses on analyzing and predicting Hanoi’s Air Quality Index (AQI) from March 2023 to March 2026 using three datasets for training, validation, and testing. The study incorporates weather-, time-, and pollution-related features to explore air quality patterns and develop predictive models.
 
-Also I am especially grateful to my three other group members for their teamwork, effort, and support throughout this project. Their contributions played an important role in making this work possible. 
-
 For me, this topic is also very personal. I come from Quy Nhon, a coastal city where the air quality is usually good, with AQI levels often staying below 60–70. Because of that, air pollution was never something I paid much attention to before coming to Hanoi for university. However, when I first arrived in Hanoi, one of my strongest impressions was how polluted the air seemed. Many mornings, I woke up and looked outside only to see a white layer that looked like mist or fog — except it was already 8 or 9 a.m., lol. The air often felt thick and hard to breathe, and even spending only around 30 minutes outside could leave the back of my throat feeling uncomfortable and make my eyes water.
 
-For this reason, when our group was assigned a Machine Learning project, AQI prediction in Hanoi was the first idea that came to mind. Our goal is to provide insights into the city’s air pollution in the hope of helping people become more aware of this issue and take appropriate measures to reduce their exposure to harmful air. This README file serves as an abstract of the project. For further details on the methods and insights, please feel free to access our Jupyter Notebooks.
+For this reason, AQI prediction in Hanoi was the first idea that came to mind. Our goal is to provide insights into the city’s air pollution in the hope of helping people become more aware of this issue and take appropriate measures to reduce their exposure to harmful air. This README file serves as an abstract of the project. For further details on the methods and insights, please feel free to access our Jupyter Notebooks.
 
 ---
 
